@@ -1,0 +1,168 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: 'tangjin';
+  src: url(./李旭科书法.ttf);
+}
+
+.wave-content {
+  background: #000000;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.wave {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  transform-origin: center center;
+  background-color: transparent;
+  border: 1px solid #f5ecec;
+  animation-duration: 4s;
+  animation-name: wv;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.wave1 {
+  animation-delay: 0s;
+}
+
+.wave2 {
+  animation-delay: 1s;
+}
+
+.wave3 {
+  animation-delay: 2s;
+}
+
+.wave4 {
+  animation-delay: 3s;
+}
+
+@keyframes wv {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  25% {
+    opacity: 0.7;
+    transform: scale(0.65);
+  }
+
+  65% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: -0.2;
+    transform: scale(1);
+  }
+}
+
+.main {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+#center_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+}
+
+.gongde {
+  position: absolute;
+  top: 0;
+  right: -100px;
+  font-family: 'tangjin';
+  font-size:60px;
+  color:  rgb(246, 255, 0);
+  z-index: 2;
+  opacity: 0;
+
+  
+  animation-duration: 0.3s;
+  animation-name: gongde;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes gongde {
+  0% {
+    opacity: 1;
+    top: 0;
+  }
+
+  100% {
+    opacity: 0;
+    top: -100px;
+  }
+}
+
+#muyu {
+  width: 100%;
+  animation-duration: 0.3s;
+  animation-name: muyuclick;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.active {
+  animation-play-state: running;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+
+@keyframes muyuclick {
+  0% {
+    transform:scale(1);
+  }
+
+  50% {
+    transform:scale(0.9);
+  }
+
+  100% {
+    transform:scale(1);
+  }
+}
+
+#txt-box {
+  font-family: 'tangjin';
+  font-size:60px;
+  color:  rgb(246, 255, 0);
+  width: 80%;
+  margin: auto;
+  height: 130px;
+  overflow: hidden;
+  text-align: center;
+  -webkit-line-clamp: 3;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="wcss.css" type="text/css" />
+</head>
+
+<body>
+  <div class="wave-content">
+    <div class="wave wave1 "></div>
+    <div class="wave wave2 "></div>
+    <div class="wave wave3 "></div>
+    <div class="wave wave4"></div>
+  </div>
+  <div class="main">
+    <input id="m-file" type="file">
+    <div id="txt-box"></div>
+    <div id="center_box">
+      <img src="./muyu.png" id="muyu" class="paused"  alt="">
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript">
+    var textIndex = 0;
+    var defaulText = `观自在菩萨，行深般若波罗蜜多时，照见五蕴皆空，渡一切苦厄。
+舍利子！色不异空，空不异色；色即是空，空即是色；受想行识，亦复如是。
+舍利子！是诸法空相，不生不灭，不垢不净，不增不减。
+是故空中无色，无受想行识，无眼耳鼻舌身意，无色声香味触法，无眼界，乃至无意识界。
+无无明，亦无无明尽，乃至无老死，亦无老死尽，无苦集灭道。无智亦无得。
+以无所得故，菩提萨埵，依般若波罗蜜多故，心无罣碍，无罣碍故，无有恐怖，远离颠倒梦想，究竟涅槃。
+三世诸佛，依般若波罗蜜多故，得阿耨多罗三藐三菩提。
+故知般若波罗蜜多，是大神咒，是大明咒，是无上咒，是无等等咒，能除一切苦，真实不虚。
+故说般若波罗蜜多咒，即说咒曰︰揭諦揭諦，波罗揭諦，波罗僧揭諦，菩提萨婆诃。`
+    // 1、获取元素
+    let fileInput = document.getElementById('m-file');
+    let muyu = document.getElementById('muyu');
+    let centerBox = document.getElementById('center_box');
+    let txtBox = document.getElementById('txt-box');
+    // 2、监听选中
+    fileInput.onchange = function () {
+      // 3、获取文件
+      let file = this.files[0]
+      // 4、创建读取器
+      let reader = new FileReader();
+      // 5、开始读取
+      reader.readAsText(file)
+      // 6、监听文件的读取状态
+      reader.onload = function () {
+        console.log(reader.result)
+      }
+    };
+    muyu.onclick = function () {
+      muyu.classList.replace('paused', 'active');
+      textIndex += 1;
+      if (textIndex > defaulText.length) {
+        textIndex = 1;
+      }
+      txtBox.innerHTML = txtBox.innerHTML + defaulText[textIndex];
+      txtBox.scrollTop = txtBox.scrollHeight;
+      createNewElement();
+      setTimeout(() => {
+        muyu.classList.replace('active', 'paused');
+      }, 250)
+    }
+    // 新建功德
+    function createNewElement () {
+      let elem = document.createElement('div');
+      elem.className = 'gongde';
+      elem.innerHTML = '功德 + 1';
+      centerBox.appendChild(elem);
+      setTimeout(() => {
+        centerBox.removeChild(elem);
+      }, 300)
+    }
+  </script>
+</body>
+
+</html>
